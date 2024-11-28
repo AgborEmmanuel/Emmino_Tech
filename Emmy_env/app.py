@@ -3,14 +3,16 @@ from flask import Flask, jsonify
 
 app = Flask(__name__)
 
-#@app.route('/')
-#def home():
-    #return jsonify(message="Hello level 400 FET, Quality Assurance!")
 
-@app.route('/error')
-def trigger_error():
-    # This will raise an exception, causing a 500 error
-    raise Exception("This is a deliberate error for testing purposes.")
+@app.route('/')
+# Intentionally cause a 500 Internal Server Error
+
+def home():
+    # Intentionally cause a 500 Internal Server Error
+    result = None
+    return result.some_nonexistent_method()  # This will raise an AttributeError
+    return jsonify(message="Hello level 400 FET, Quality Assurance!")
+
 
 if __name__ == '__main__':
     app.run(debug=True)
